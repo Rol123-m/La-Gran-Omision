@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Gran Omisión — Estudio sobre Mateo 28:19-20</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f5f1eb;
+      --card: #ffffff;
+      --muted: #5d5047;
+      --accent: #b45f2e;        /* tono tierra que recuerda urgencia/llamado */
+      --accent-2: #c17f4a;
+      --accent-light: #f7ede4;
+      --maxw: 1200px;
+      --shadow: 0 10px 30px rgba(30, 41, 51, 0.12);
+      --shadow-light: 0 6px 20px rgba(30, 41, 51, 0.06);
+      --border-radius: 12px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #f0ebe5);
+      color: #2b2a27;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header */
+    .church-header {
+      text-align: center;
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(180, 95, 46, 0.2);
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .church-name {
+      font-family: Merriweather, serif;
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    
+    .church-motto {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    .header-icon {
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      color: var(--accent);
+      font-size: 24px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(180, 95, 46, 0.05) 0%, rgba(180, 95, 46, 0.01) 100%);
+      border-radius: var(--border-radius);
+      padding: 35px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-light);
+      border: 1px solid rgba(180, 95, 46, 0.1);
+    }
+    
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+    
+    .hero-content h1 {
+      font-family: Merriweather, serif;
+      font-size: 38px;
+      color: #3a2e28;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+    
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+      padding: 5px 12px;
+      background-color: var(--accent-light);
+      border-radius: 20px;
+    }
+    
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+    
+    .hero-image {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      height: 100%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #8b5a2b, #b97543);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .placeholder-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    
+    /* Magazine Layout */
+    .magazine-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    @media (min-width: 992px) {
+      .magazine-layout {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    
+    /* Cards */
+    .card {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(30, 41, 51, 0.1);
+      border-left-color: var(--accent);
+    }
+    
+    .evidence-card {
+      border-left-color: var(--accent);
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(180, 95, 46, 0.1);
+    }
+    
+    .card-number {
+      background: var(--accent);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 18px;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(180, 95, 46, 0.2);
+    }
+    
+    .card-title {
+      font-family: Merriweather, serif;
+      font-size: 26px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    
+    .card-subtitle {
+      font-family: Merriweather, serif;
+      font-size: 22px;
+      color: var(--accent);
+      margin: 20px 0 15px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .card-content {
+      color: var(--muted);
+    }
+    
+    .card-content ul, .card-content ol {
+      padding-left: 25px;
+      margin-bottom: 20px;
+    }
+    
+    .card-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    
+    /* Evidence sections */
+    .evidence-section {
+      margin-bottom: 25px;
+    }
+    
+    .evidence-title {
+      display: flex;
+      align-items: center;
+      font-family: Merriweather, serif;
+      font-size: 20px;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .evidence-icon {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    
+    /* Two-column layout for cards */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin: 25px 0;
+    }
+    
+    @media (min-width: 768px) {
+      .two-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    /* Quote */
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding: 20px 25px;
+      margin: 25px 0;
+      background: linear-gradient(180deg, #fff 0%, rgba(180, 95, 46, 0.05) 100%);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+    }
+    
+    .quote-text {
+      font-family: Merriweather, serif;
+      font-size: 22px;
+      color: #5d3e2e;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .quote-reference {
+      text-align: right;
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    /* Interactive Elements */
+    .interactive-element {
+      background: linear-gradient(135deg, #f7ede4, #efe2d6);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(180, 95, 46, 0.1);
+    }
+    
+    .interactive-element:hover {
+      background: linear-gradient(135deg, #efe2d6, #e6d4c4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(180, 95, 46, 0.1);
+    }
+    
+    .interactive-title {
+      font-family: Merriweather, serif;
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background: transparent;
+    }
+    
+    .sidebar-card {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-light);
+    }
+    
+    .sidebar-title {
+      font-family: Merriweather, serif;
+      font-size: 22px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(180, 95, 46, 0.1);
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .tag {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 3px 6px rgba(180, 95, 46, 0.2);
+    }
+    
+    /* Autopsy list */
+    .autopsy-list {
+      list-style: none;
+      padding: 0;
+    }
+    .autopsy-list li {
+      margin-bottom: 15px;
+      padding-left: 28px;
+      position: relative;
+    }
+    .autopsy-list li i {
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 4px;
+      font-size: 18px;
+    }
+    
+    /* Stats & Numbers */
+    .stats-box {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .stat-item {
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-family: Merriweather, serif;
+      font-size: 36px;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Questions Section (adaptada para preguntas del sermón) */
+    .questions-section {
+      margin-top: 40px;
+    }
+    
+    .question-item {
+      background: linear-gradient(180deg, #fff 0%, #f9fbfd 100%);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .question-text {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    
+    .answer-text {
+      color: var(--muted);
+      padding: 15px;
+      background-color: rgba(180, 95, 46, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-2);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 50px;
+      color: var(--muted);
+      font-size: 15px;
+      border-top: 1px solid rgba(180, 95, 46, 0.1);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 767px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .hero {
+        padding: 25px 20px;
+      }
+      
+      .hero-content h1 {
+        font-size: 30px;
+      }
+      
+      .card {
+        padding: 25px 20px;
+      }
+      
+      .card-title {
+        font-size: 22px;
+      }
+      
+      .header-icon {
+        display: none;
+      }
+      
+      .stats-box {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    .delay-5 { animation-delay: 0.5s; opacity: 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Church Header (misma iglesia) -->
+    <header class="church-header">
+      <div class="church-name">Iglesia Bautista de Sola</div>
+      <div class="church-motto">Solo Cristo Salva</div>
+      <div class="header-icon">
+        <i class="fas fa-cross"></i>
+      </div>
+    </header>
+    
+    <!-- Hero Section – Gran Omisión -->
+    <section class="hero fade-in">
+      <div class="hero-content">
+        <div class="eyebrow">La Última Voluntad de Jesús</div>
+        <h1>La Gran Omisión: ¿Hemos olvidado nuestro llamado?</h1>
+        <p class="lead">La iglesia que no cumple la Gran Comisión no justifica su existencia. El mandato es claro: "Id y haced discípulos". Sin embargo, hoy muchos creyentes viven entretenidos, y la obra de Dios se detiene.</p>
+        
+        <div class="interactive-element" onclick="scrollToSection('autopsia')">
+          <div class="interactive-title">Comenzar: autopsia de una iglesia muerta</div>
+          <p>9 principios que explican por qué miles de iglesias desaparecen cada año</p>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          <div class="placeholder-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <h3 style="color: white; margin-bottom: 10px;">Mateo 28:19-20</h3>
+          <p style="color: rgba(255,255,255,0.9);">“Por tanto, id, y haced discípulos a todas las naciones…”</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Stats -->
+    <div class="stats-box fade-in delay-1">
+      <div class="stat-item">
+        <div class="stat-number">4500</div>
+        <div class="stat-label">Iglesias cierran al año (EE.UU.)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100k</div>
+        <div class="stat-label">En declive</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Gran Comisión</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">¿Tú?</div>
+        <div class="stat-label">Obrero o espectador</div>
+      </div>
+    </div>
+    
+    <!-- Magazine Layout -->
+    <div class="magazine-layout">
+      <main class="main-content">
+        <!-- Autopsia: 9 principios (sección basada en el PDF) -->
+        <section class="card fade-in delay-2" id="autopsia">
+          <div class="card-header">
+            <div class="card-number">1</div>
+            <h2 class="card-title">Autopsia de una iglesia muerta</h2>
+          </div>
+          <div class="card-content">
+            <p>Investigadores analizaron miles de iglesias que desaparecieron. Estas son las causas recurrentes:</p>
+            
+            <ul class="autopsy-list">
+              <li><i class="fas fa-water"></i> <strong>Lenta erosión:</strong> el declive es casi imperceptible hasta que es tarde.</li>
+              <li><i class="fas fa-history"></i> <strong>El pasado es el héroe:</strong> “aquí siempre se ha hecho así”.</li>
+              <li><i class="fas fa-warehouse"></i> <strong>Encerrada en cuatro paredes:</strong> la iglesia se protege del mundo, no alcanza a la comunidad.</li>
+              <li><i class="fas fa-coins"></i> <strong>Economía hacia adentro:</strong> el dinero se gasta en programas sin propósito.</li>
+              <li><i class="fas fa-eye-slash"></i> <strong>La Gran Omisión:</strong> los métodos desplazan a la predicación; no se hace discípulos.</li>
+              <li><i class="fas fa-users-slash"></i> <strong>Sin visión común:</strong> reinan los intereses personales, divisiones.</li>
+              <li><i class="fas fa-pastor"></i> <strong>Cambios pastorales frecuentes:</strong> no hay fruto porque no hay permanencia.</li>
+              <li><i class="fas fa-pray"></i> <strong>Carencia de oración:</strong> programas vacíos, sin vida espiritual real.</li>
+              <li><i class="fas fa-tasks"></i> <strong>Sin propósito:</strong> actividades sin rumbo, sobrecarga de los líderes.</li>
+            </ul>
+            
+            <div class="quote">
+              <div class="quote-text">"Otros primero es igual a Vida. Nosotros primero es igual a muerte."</div>
+              <div class="quote-reference">— Autopsia de una iglesia muerta</div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Mateo 28:19-20 desglose -->
+        <section class="card evidence-card fade-in delay-2">
+          <div class="card-header">
+            <div class="card-number">2</div>
+            <h2 class="card-title">El texto: mandatos y promesa</h2>
+          </div>
+          <div class="card-content">
+            <div class="evidence-section">
+              <div class="evidence-title">
+                <i class="fas fa-shoe-prints evidence-icon"></i>
+                <h3>“Id” — salir del campamento</h3>
+              </div>
+              <p>No esperar que vengan, sino ir en la vida diaria: trabajo, calle, familia. La iglesia sale de su comodidad.</p>
+            </div>
+            <div class="evidence-section">
+              <div class="evidence-title">
+                <i class="fas fa-chalkboard-teacher evidence-icon"></i>
+                <h3>“Haced discípulos” — el verbo rector</h3>
+              </div>
+              <p>No se trata de miembros, sino de aprendices que obedecen todo lo que Jesús mandó. Discípulos que hacen discípulos.</p>
+            </div>
+            <div class="two-columns">
+              <div>
+                <h4>Bautizándolos</h4>
+                <p>Confesión pública de fe. No salva, pero es obediencia.</p>
+              </div>
+              <div>
+                <h4>Enseñándoles</h4>
+                <p>Obedecer todo lo mandado. Discipulado integral.</p>
+              </div>
+            </div>
+            <div class="evidence-section">
+              <div class="evidence-title">
+                <i class="fas fa-hand-holding-heart evidence-icon"></i>
+                <h3>“Yo estoy con vosotros”</h3>
+              </div>
+              <p>Promesa no a los encerrados, sino a los que van. Hasta el fin.</p>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Mateo 9:35-38 compasión -->
+        <section class="card evidence-card fade-in delay-3">
+          <div class="card-header">
+            <div class="card-number">3</div>
+            <h2 class="card-title">El corazón de Jesús: compasión</h2>
+          </div>
+          <div class="card-content">
+            <p><strong>Mateo 9:35-38:</strong> Jesús ve las multitudes desamparadas, como ovejas sin pastor. La mies es mucha, los obreros pocos.</p>
+            <div class="quote">
+              <div class="quote-text">"La solución de Dios para un pueblo desamparado es una iglesia compasiva."</div>
+            </div>
+            <p><i class="fas fa-times-circle" style="color: var(--accent);"></i> Los fariseos eran insensibles: les importaban sus tradiciones y ganancias, no la gente.</p>
+            <p><i class="fas fa-check-circle" style="color: var(--accent);"></i> Jesús pide que roguemos por obreros. Esa es nuestra tarea: ser la respuesta.</p>
+            
+            <div class="interactive-element" onclick="toggleContent('obreros')">
+              <div class="interactive-title">¿Quiénes son los obreros?</div>
+              <p>Haz clic para ver la pregunta que resuena hoy</p>
+              <div id="obreros" style="display: none; margin-top: 20px; background: rgba(255,255,240,0.6); padding:15px; border-radius:8px;">
+                <p><strong>“¿A quién enviaré, y quién irá por nosotros?”</strong> La necesidad no espera; la gente va al infierno. <strong>Tú eres la respuesta de Dios.</strong></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Legalismo vs compasión -->
+        <section class="card evidence-card fade-in delay-3">
+          <div class="card-header">
+            <div class="card-number">4</div>
+            <h2 class="card-title">Legalismo: el enemigo de la compasión</h2>
+          </div>
+          <div class="card-content">
+            <p>Los fariseos explotaban la fe por lucro. Jesús los confronta. El legalismo se enfoca en proyectos, no en personas; mata la misericordia.</p>
+            <p>Hoy podemos caer en lo mismo: más tradiciones que amor, más programas que presencia.</p>
+            <div class="quote">
+              <div class="quote-text">"La religión no es la cura para el pecado; la iglesia llena de compasión es la solución."</div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Preguntas desafiantes (adaptadas del contexto) -->
+        <section class="questions-section fade-in delay-4">
+          <h2 class="card-title" style="margin-bottom: 25px;">Preguntas para examen personal</h2>
+          
+          <div class="question-item">
+            <div class="question-text">1. ¿Cuándo fue la última vez que compartí el evangelio con alguien?</div>
+            <div class="answer-text">No se trata de sentir culpa, sino de reorientar la vida. El Espíritu nos da poder para ser testigos.</div>
+          </div>
+          
+          <div class="question-item">
+            <div class="question-text">2. Si Dios mira mi vida hoy, ¿ve a alguien que cumple la Gran Comisión o a un exponente de la Gran Omisión?</div>
+            <div class="answer-text">Podemos empezar hoy: orar por los perdidos, dar un vaso de agua, invitar a alguien a conocer a Cristo.</div>
+          </div>
+          
+          <div class="interactive-element" onclick="toggleContent('mas-preguntas')">
+            <div class="interactive-title">Otra pregunta crucial</div>
+            <p>¿Dónde están los obreros compasivos en Sola?</p>
+            <div id="mas-preguntas" style="display: none; margin-top: 20px; text-align: left;">
+              <p>En tu colonia hay matrimonios rotos, adolescentes sin rumbo, niños con hambre. La iglesia tiene la respuesta. Esa respuesta eres tú con el poder de Dios.</p>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Conclusión -->
+        <section class="card fade-in delay-5">
+          <div class="card-header">
+            <div class="card-number">5</div>
+            <h2 class="card-title">Conclusión: tú eres la respuesta</h2>
+          </div>
+          <div class="card-content">
+            <div class="quote">
+              <div class="quote-text">"¿A quién enviaré, y quién irá por nosotros?"</div>
+              <div class="quote-reference">Isaías 6:8</div>
+            </div>
+            <p>Jesús nos ha dado autoridad y promesa. La mies sigue lista. Pero los obreros escasean. No más omisión. Seamos discípulos que hacen discípulos.</p>
+            <p><strong>La iglesia que no cumple la Gran Comisión no justifica su existencia. Nosotros sí queremos justificarla, con la gracia de Dios.</strong></p>
+            
+            <div class="interactive-element" onclick="scrollToSection('autopsia')">
+              <div class="interactive-title">Volver al inicio</div>
+              <p>Revisa los principios y ora: Señor, envíame a mí.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-card fade-in delay-1">
+          <h3 class="sidebar-title">La Gran Comisión</h3>
+          <ul>
+            <li><i class="fas fa-check" style="color:var(--accent);"></i> Id (en el camino)</li>
+            <li><i class="fas fa-check" style="color:var(--accent);"></i> Haced discípulos</li>
+            <li><i class="fas fa-check" style="color:var(--accent);"></i> Bautizad</li>
+            <li><i class="fas fa-check" style="color:var(--accent);"></i> Enseñad a obedecer</li>
+            <li><i class="fas fa-check" style="color:var(--accent);"></i> Yo estoy con vosotros</li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-card fade-in delay-2">
+          <h3 class="sidebar-title">Conceptos Clave</h3>
+          <div class="tags">
+            <div class="tag">Gran Omisión</div>
+            <div class="tag">Discipulado</div>
+            <div class="tag">Compasión</div>
+            <div class="tag">Legalismo</div>
+            <div class="tag">Obreros</div>
+            <div class="tag">Autopsia</div>
+            <div class="tag">Misión</div>
+            <div class="tag">Sola</div>
+          </div>
+        </div>
+        
+        <div class="sidebar-card fade-in delay-3">
+          <h3 class="sidebar-title">Para profundizar</h3>
+          <p>Textos bíblicos:</p>
+          <ul>
+            <li>Mateo 28:18-20</li>
+            <li>Mateo 9:35-38</li>
+            <li>Hechos 1:8</li>
+            <li>Romanos 10:13-15</li>
+          </ul>
+        </div>
+        
+        <div class="sidebar-card fade-in delay-4">
+          <h3 class="sidebar-title">Próxima clase</h3>
+          <p><strong>El perfil del obrero</strong></p>
+          <p>Características de un discípulo que hace discípulos: vida de oración, carácter, compasión y valentía.</p>
+        </div>
+      </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer fade-in delay-5">
+      <p>Iglesia Bautista de Sola — Solo Cristo Salva</p>
+      <p>Serie: "La Gran Omisión" · Mateo 28:19-20</p>
+      <p style="margin-top: 15px; font-size: 14px; color: #888;">"Tú eres la respuesta de Dios para un mundo desamparado."</p>
+    </footer>
+  </div>
+
+  <script>
+    // Funciones de interacción
+    function scrollToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function toggleContent(elementId) {
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+    
+    // Animación por scroll (mantener igual que el original)
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (!e.target.closest('.interactive-element')) {
+            this.classList.toggle('expanded');
+          }
+        });
+      });
+      
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
